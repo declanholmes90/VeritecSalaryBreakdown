@@ -20,7 +20,7 @@ namespace SalaryBreakDown
                 GlobalCollections.PeriodCollection.FirstOrDefault(p => p.Key.ToLower() == frequency.ToLower()).Value);
 
             Console.WriteLine($"{Environment.NewLine}{Resources.SalaryBreakDownManager_ProcessingMsg}{Environment.NewLine}");
-            Console.WriteLine($"{Resources.SalaryBreakDownManager_GrossIncome}{salaryPackage.GrossIncome}");
+            Console.WriteLine($"{Resources.SalaryBreakDownManager_GrossIncome}{salaryPackage.GrossIncome.ToString("C", CultureInfo.CurrentCulture)}");
             DisplaySuperComponent();
             Console.WriteLine();
             DisplayTaxableIncome();
@@ -38,11 +38,11 @@ namespace SalaryBreakDown
         public double TakePackageAmountArgument()
         {
             Console.WriteLine(Resources.SalaryBreakDownManager_EnterSalary);
-            int income = 0;
+            double income = 0;
 
             try
             {
-                 income = int.Parse(Console.ReadLine());
+                 income = double.Parse(Console.ReadLine());
             }
             catch(ArgumentException)
             {
